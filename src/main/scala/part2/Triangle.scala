@@ -1,9 +1,9 @@
 package part2
 
-case class Triangle(base: Double, height: Double) {
+case class Triangle(base: BigDecimal, height: BigDecimal) {
   require(base != 0)
   require(height !=0)
-  def area: Double = {
+  def area: BigDecimal = {
     (base * height) / 2
   }
 }

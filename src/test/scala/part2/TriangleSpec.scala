@@ -3,13 +3,13 @@ package part2
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
-class TriangleSpec extends AnyFunSuite with Matchers{
-  test("Successfully calculate area of triangle with integer type base and height") {
+class TriangleSpec extends AnyFunSuite with Matchers {
+  test("should successfully calculate area of triangle with integer type base and height") {
     val expected = 15
     val actual = Triangle(5, 6).area
     actual shouldEqual expected
   }
-  test("Successfully calculate area of triangle with double type base and height") {
+  test("should successfully calculate area of triangle with double type base and height") {
     val expected = 17.512
     val actual = Triangle(5.5, 6.368).area
     actual shouldEqual expected
