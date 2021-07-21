@@ -27,5 +27,4 @@ For running locally, you can use: </br>
 Area of Triangle with base 14.30 and height 4.0 is: 28.60</br>
 **Part 3**</br>
 Team(s) with the smallest difference in 'for' and 'against' goals:</br>
-* Team: Tottenham, Goals Scored For: 49, Goals Score Against: 53</br>
-* Team: Blackburn, Goals Scored For: 55, Goals Score Against: 51</br>
+* Team: Aston_Villa, Goals Scored For: 46, Goals Scored Against: 47

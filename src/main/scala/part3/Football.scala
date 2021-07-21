@@ -14,8 +14,8 @@ case class TableRow(team: String, goalsFor: Int, goalsAgainst: Int) extends Orde
 
 object Football {
 
-  private val relevantRowRegex = raw"\s*\d+.\s*[a-zA-Z]+(\s+\d+){5}\s+-(\s+\d+){2}"
-  private val teamNameRegex = "[a-zA-Z]+".r
+  private val relevantRowRegex = raw"\s*\d+.\s*[a-zA-Z_]+(\s+\d+){5}\s+-(\s+\d+){2}"
+  private val teamNameRegex = "[a-zA-Z_]+".r
   private val goalsForAndAgainstRegex = raw"(\d+\s+-\s+\d+)".r
 
   def getTeamWithSmallestGoalDifference(filePath: String): List[TableRow] = {

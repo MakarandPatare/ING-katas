@@ -16,7 +16,7 @@ class FootballSpec extends AnyFunSuite with Matchers {
     actual shouldEqual expected
   }
   test("should return correct answer if there is single team with smallest goal difference") {
-    val expected = List(("Tottenham"))
+    val expected = List(("Aston_Villa"))
     val filePath = "src/test/scala/part3/resources/football_min_goal_difference_single_team.dat"
     val actual = Football.getTeamWithSmallestGoalDifference(filePath).map(t => t.team)
     actual shouldEqual expected
