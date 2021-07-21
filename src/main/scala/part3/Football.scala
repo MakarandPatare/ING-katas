@@ -3,18 +3,28 @@ package part3
 import scala.collection.mutable.ListBuffer
 import scala.io.BufferedSource
 
-case class TableRow(team: String, goalsFor: Int, goalsAgainst: Int)
+case class TableRow(team: String, goalsFor: Int, goalsAgainst: Int) extends Ordered[TableRow]{ tr =>
+  override def compare(that: TableRow): Int =
+    getAbsoluteGoalDifference compareTo that.getAbsoluteGoalDifference
+
+  def getAbsoluteGoalDifference: Int = {
+    Math.abs(tr.goalsFor - tr.goalsAgainst)
+  }
+}
 
 object Football {
 
-  val filePath = "src/main/scala/part3/resources/football.dat"
-  val relevantRowRegex = raw"\s*\d+.\s*[a-zA-Z]+(\s+\d+){5}\s+-(\s+\d+){2}"
-  val teamNameRegex = "[a-zA-Z]+".r
-  val goalsForAndAgainstRegex = raw"(\d+\s+-\s+\d+)".r
+  private val relevantRowRegex = raw"\s*\d+.\s*[a-zA-Z]+(\s+\d+){5}\s+-(\s+\d+){2}"
+  private val teamNameRegex = "[a-zA-Z]+".r
+  private val goalsForAndAgainstRegex = raw"(\d+\s+-\s+\d+)".r
 
-  def getTeamWithSmallestGoalDifference: String = {
+  def getTeamWithSmallestGoalDifference(filePath: String): List[TableRow] = {
     val eplResults = extractEplResultsFromFile(filePath: String)
-    eplResults.minBy(e => Math.abs(e.goalsFor - e.goalsAgainst)).team
+
+    val sortedResults = eplResults.sorted
+    val minGoalDifference = sortedResults.head.getAbsoluteGoalDifference
+
+    sortedResults.takeWhile(t => t.getAbsoluteGoalDifference == minGoalDifference)
   }
 
   private def readFile(filePath: String): BufferedSource = {
